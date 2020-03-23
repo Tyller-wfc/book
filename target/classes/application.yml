@@ -1,7 +1,0 @@
-
-server:
-  port: 8088
-
-person:
-  name: wfc
-  age: 30
