@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
+@RequestMapping("/user")
 public class UserController {
     @GetMapping("/login")
     @ResponseBody

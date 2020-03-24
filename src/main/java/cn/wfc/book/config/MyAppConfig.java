@@ -16,12 +16,13 @@ public class MyAppConfig implements WebMvcConfigurer{
     public void addViewControllers(ViewControllerRegistry registry) {
      registry.addViewController("/").setViewName("index");
      registry.addViewController("/index.html").setViewName("index");
+     registry.addViewController("/edit.html").setViewName("edit");
     }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new LoginInterceptor()).
                 addPathPatterns("/**").
-                excludePathPatterns("/index.html","/","/login","/**/*.css","/**/*.js");
+                excludePathPatterns("/index.html","/","/user/login","/**/*.css","/**/*.js");
     }
 }

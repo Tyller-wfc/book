@@ -147,12 +147,12 @@ function loginAction() {
         "password": password
     };
     $.ajax({
-        url: 'login',
+        url: 'user/login',
         data: data,
         type: 'get',
         success: function (res) {
             if (res.message == "success") {
-                location.href = 'edit';
+                location.href = 'edit.html';
             }else {
                 $('#count').next().html(res.message);
             }
