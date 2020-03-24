@@ -1,0 +1,22 @@
+{
+  "groups": [
+    {
+      "name": "person",
+      "type": "cn.wfc.book.bean.Person",
+      "sourceType": "cn.wfc.book.bean.Person"
+    }
+  ],
+  "properties": [
+    {
+      "name": "person.age",
+      "type": "java.lang.Integer",
+      "sourceType": "cn.wfc.book.bean.Person"
+    },
+    {
+      "name": "person.name",
+      "type": "java.lang.String",
+      "sourceType": "cn.wfc.book.bean.Person"
+    }
+  ],
+  "hints": []
+}
