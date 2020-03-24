@@ -8,3 +8,10 @@ person:
 spring:
   thymeleaf:
     cache: false
+  datasource:
+    url: jdbc:mysql://localhost:3306/cloud_note?serverTimezone=UTC
+    username: root
+    password: 123456
+    type: org.apache.commons.dbcp.BasicDataSource
+mybatis:
+  mapper-locations: classpath:cn/wfc/book/mapper/*.xml

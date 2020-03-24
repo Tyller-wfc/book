@@ -147,16 +147,19 @@ function loginAction() {
         "password": password
     };
     $.ajax({
-        url: 'user/login',
+        url: 'login',
         data: data,
         type: 'get',
         success: function (res) {
-            if (res.message == "success") {
-                location.href = 'edit.html';
-            }else {
+            if(res.state===SUCCESS) {
+                location.href = "edit.html";
+            }else if(res.state===ERROR) {
                 $('#count').next().html(res.message);
+            }else if(res.state===2){
+                $('#password').next().html(res.message);
+            }else {
+                $('#count').next().html("未知错误");
             }
-
         },
         error: function (e) {
             alert("通信失败!");

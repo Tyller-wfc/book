@@ -1,5 +1,8 @@
 package cn.wfc.book.controller;
 
+import cn.wfc.book.bean.JsonResult;
+import cn.wfc.book.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,22 +14,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/user")
-public class UserController {
+public class LoginController {
+
+    @Autowired
+    private UserService userService;
+
     @GetMapping("/login")
     @ResponseBody
-    public Map login(@RequestParam("name") String name,
-                     @RequestParam("password") String password,
-                     HttpServletRequest request){
-        Map<String, String> map = new HashMap<>();
-        if (name.equals("admin") && password.equals("111111")) {
-            request.getSession().setAttribute("loginUser",name);
-            map.put("message", "success");
-        } else {
-            map.put("message", "用户名错误");
-        }
-        return map;
+    public JsonResult login(@RequestParam("name") String name,
+                            @RequestParam("password") String password,
+                            HttpServletRequest request){
+        return userService.login(name,password,request);
     }
+
     @RequestMapping("/edit")
     public String edit(){
         return "edit";
