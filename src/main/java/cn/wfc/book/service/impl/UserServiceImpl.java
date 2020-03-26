@@ -7,7 +7,7 @@ import cn.wfc.book.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public JsonResult login(String name, String password, HttpServletRequest request) {
+    public JsonResult login(String name, String password, HttpSession session) {
         User user = new User(name, password);
         if (user == null) {
             return new JsonResult("传入用户信息为空");
@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
             } else if (!one.getPassword().equals(user.getPassword())) {
                 return new JsonResult(2, "密码错误");
             } else {
-                request.getSession().setAttribute("loginUser", one);
+                session.setAttribute("loginUser", one);
                 return new JsonResult(one);
             }
         }

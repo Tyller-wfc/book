@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -22,10 +25,17 @@ class BookApplicationTests {
 	UserDao userDao;
 	@Autowired
 	NotebookDao notebookDao;
+	@Autowired
+	DataSource dataSource;
+
 	@Test
-	void contextLoads() {
-		List<Map<String, Object>> notebooksByUserId = notebookDao.findNotebooksByUserId("39295a3d-cc9b-42b4-b206-a2e7fab7e77c");
-		System.out.println(notebooksByUserId.size());
+	void contextLoads() throws SQLException {
+		/*List<Map<String, Object>> notebooksByUserId = notebookDao.findNotebooksByUserId("39295a3d-cc9b-42b4-b206-a2e7fab7e77c");
+		System.out.println(notebooksByUserId.size());*/
+		System.out.println(dataSource.getClass());
+		Connection connection = dataSource.getConnection();
+		System.out.println(connection);
+		connection.close();
 	}
 
 }

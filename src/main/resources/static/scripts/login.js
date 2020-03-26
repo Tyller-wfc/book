@@ -152,6 +152,7 @@ function loginAction() {
         type: 'get',
         success: function (res) {
             if(res.state===SUCCESS) {
+                addCookie("userId", res.data.id);
                 location.href = "edit.html";
             }else if(res.state===ERROR) {
                 $('#count').next().html(res.message);
