@@ -46,6 +46,7 @@ public class MyAppConfig implements WebMvcConfigurer{
      * 配置druid的监控
      * @return
      */
+    @Bean
     public FilterRegistrationBean webStatFilter(){
         FilterRegistrationBean registrationBean = new FilterRegistrationBean();
         registrationBean.setFilter(new WebStatFilter());
