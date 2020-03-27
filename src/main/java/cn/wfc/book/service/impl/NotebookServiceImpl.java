@@ -6,6 +6,7 @@ import cn.wfc.book.dao.UserDao;
 import cn.wfc.book.service.NotebookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,6 +25,7 @@ public class NotebookServiceImpl implements NotebookService {
     private int pageSize;
 
     public List<Map<String, Object>> listNotebooks(String userId) {
+        System.out.println("查询笔记本=userId为:" + userId);
         if (userId == null || userId.trim().isEmpty()) {
             throw new RuntimeException("ID不能空");
         }
@@ -33,11 +35,12 @@ public class NotebookServiceImpl implements NotebookService {
         }
         return notebookDao.findNotebooksByUserId(userId);
     }
-
+    @Cacheable(cacheNames = "notebook",key = "#userId")
     public List<Map<String, Object>>
     listNotebooks(
             String userId, Integer page)
             throws RuntimeException {
+        System.out.println("查询笔记本列表");
         if (userId == null || userId.trim().isEmpty()) {
             throw new RuntimeException("ID不能空");
         }

@@ -36,3 +36,4 @@ spring:
     use-global-data-source-stat: true
 mybatis:
   mapper-locations: classpath:cn/wfc/book/mapper/*.xml
+  config-location: classpath:mybatis/mybatis-config.xml
