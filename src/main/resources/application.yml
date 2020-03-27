@@ -34,6 +34,9 @@ spring:
     max-pool-prepared-statement-per-connection-size: 20
     filters: stat,wall
     use-global-data-source-stat: true
+  redis:
+    host: localhost
+    port: 6379
 mybatis:
   mapper-locations: classpath:cn/wfc/book/mapper/*.xml
   config-location: classpath:mybatis/mybatis-config.xml
