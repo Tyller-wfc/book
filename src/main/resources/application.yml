@@ -35,8 +35,13 @@ spring:
     filters: stat,wall
     use-global-data-source-stat: true
   redis:
-    host: localhost
+    host: 192.168.122.132
     port: 6379
+  rabbitmq:
+    host: 192.168.122.132
+    port: 5672
+    username: guest
+    password: guest
 mybatis:
   mapper-locations: classpath:cn/wfc/book/mapper/*.xml
   config-location: classpath:mybatis/mybatis-config.xml
